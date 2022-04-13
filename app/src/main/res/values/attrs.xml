@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="TitleView">
+
+        <!--是否显示左边内容-->
+        <attr name="showLeft" format="boolean" />
+        <attr name="textLeft" format="string" />
+        <attr name="iconLeft" format="reference" />
+
+        <!--设置标题-->
+        <attr name="textTitle" format="string" />
+        <!--设置下拉箭头样式-->
+        <attr name="iconTitle" format="reference" />
+
+
+        <!--设置右边的图标-->
+        <attr name="iconRight" format="reference" />
+        <!--设置右边的文字-->
+        <attr name="textRight" format="string" />
+
+
+        <attr name="showOnlyBar" format="boolean" />
+    </declare-styleable>
+</resources>

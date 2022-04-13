@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+
+    <androidx.appcompat.widget.AppCompatRadioButton
+        android:id="@+id/item_center_arb"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginBottom="12dp"
+        android:background="@drawable/radius_white_bg"
+        android:button="@null"
+        android:drawableTop="@drawable/center_question"
+        android:drawablePadding="2dp"
+        android:gravity="center"
+        android:paddingTop="18dp"
+        android:paddingBottom="6dp"
+        android:stateListAnimator="@null"
+        android:text="问题"
+        android:textColor="@color/main_theme"
+        android:textStyle="bold" />
+
+</FrameLayout>

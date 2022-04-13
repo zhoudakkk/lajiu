@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#1296db</color>
+    <color name="colorPrimaryDark">#1296db</color>
+    <color name="colorAccent">#1296db</color>
+    <color name="main_theme">#1296db</color>
+
+    <color name="main_button_bg">#1296db</color>
+
+    <color name="text_color">#666666</color>
+    <color name="text_color_999">#999999</color>
+    <color name="black">#000</color>
+    <color name="item_color_type">#FF6555</color>
+    <color name="color_red">#ff0000</color>
+
+
+
+    <color name="line">#eee</color>
+    <color name="white">#ffffff</color>
+    <color name="text_9_color">#999999</color>
+
+
+    <color name="main_bg">#F5F5F7</color>
+</resources>
