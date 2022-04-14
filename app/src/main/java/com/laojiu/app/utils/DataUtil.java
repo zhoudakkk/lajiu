@@ -14,4 +14,17 @@ public class DataUtil {
         return APP.getDaoSession().getDaoThemeBeanDao().queryBuilder().
                 where(DaoThemeBeanDao.Properties.Type.eq(AppContent.QuestionType), DaoThemeBeanDao.Properties.TagID.between(pager, 10 + pager)).list();
     }
+
+    public static List<DaoThemeBean> getAllQuestionData() {
+
+        return APP.getDaoSession().getDaoThemeBeanDao().queryBuilder().
+                where(DaoThemeBeanDao.Properties.Type.eq(AppContent.QuestionType)).list();
+    }
+
+
+    public static List<DaoThemeBean> getAllData(String type) {
+
+        return APP.getDaoSession().getDaoThemeBeanDao().queryBuilder().
+                where(DaoThemeBeanDao.Properties.Type.eq(type)).list();
+    }
 }

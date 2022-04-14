@@ -22,6 +22,18 @@ public class DaoThemeBean {
     public String theme;
 
     /**
+     * 完成次数
+     */
+    public Long completeNumber;
+
+    //"1"
+    public Boolean isSign;
+
+    public Boolean isError;
+
+
+
+    /**
      * 0 是问题
      * 1 是原因
      * 2 是对策
@@ -31,27 +43,22 @@ public class DaoThemeBean {
     @Convert(columnType = String.class, converter = StemBean_Converter.class)
     public List<StemBean> stemBeanList;
 
-
-    @Generated(hash = 1193499453)
-    public DaoThemeBean(Long id, Long tagID, String theme, String type,
+    @Generated(hash = 1183226133)
+    public DaoThemeBean(Long id, Long tagID, String theme, Long completeNumber,
+            Boolean isSign, Boolean isError, String type,
             List<StemBean> stemBeanList) {
         this.id = id;
         this.tagID = tagID;
         this.theme = theme;
+        this.completeNumber = completeNumber;
+        this.isSign = isSign;
+        this.isError = isError;
         this.type = type;
         this.stemBeanList = stemBeanList;
     }
 
     @Generated(hash = 1264352840)
     public DaoThemeBean() {
-    }
-
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
     }
 
     public Long getId() {
@@ -78,11 +85,59 @@ public class DaoThemeBean {
         this.theme = theme;
     }
 
+    public Long getCompleteNumber() {
+        return completeNumber;
+    }
+
+    public void setCompleteNumber(Long completeNumber) {
+        this.completeNumber = completeNumber;
+    }
+
+    public Boolean getSign() {
+        return isSign;
+    }
+
+    public void setSign(Boolean sign) {
+        isSign = sign;
+    }
+
+    public Boolean getError() {
+        return isError;
+    }
+
+    public void setError(Boolean error) {
+        isError = error;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
     public List<StemBean> getStemBeanList() {
         return stemBeanList;
     }
 
     public void setStemBeanList(List<StemBean> stemBeanList) {
         this.stemBeanList = stemBeanList;
+    }
+
+    public Boolean getIsSign() {
+        return this.isSign;
+    }
+
+    public void setIsSign(Boolean isSign) {
+        this.isSign = isSign;
+    }
+
+    public Boolean getIsError() {
+        return this.isError;
+    }
+
+    public void setIsError(Boolean isError) {
+        this.isError = isError;
     }
 }

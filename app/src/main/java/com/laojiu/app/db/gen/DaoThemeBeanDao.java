@@ -30,8 +30,11 @@ public class DaoThemeBeanDao extends AbstractDao<DaoThemeBean, Long> {
         public final static Property Id = new Property(0, Long.class, "id", true, "_id");
         public final static Property TagID = new Property(1, Long.class, "tagID", false, "TAG_ID");
         public final static Property Theme = new Property(2, String.class, "theme", false, "THEME");
-        public final static Property Type = new Property(3, String.class, "type", false, "TYPE");
-        public final static Property StemBeanList = new Property(4, String.class, "stemBeanList", false, "STEM_BEAN_LIST");
+        public final static Property CompleteNumber = new Property(3, Long.class, "completeNumber", false, "COMPLETE_NUMBER");
+        public final static Property IsSign = new Property(4, Boolean.class, "isSign", false, "IS_SIGN");
+        public final static Property IsError = new Property(5, Boolean.class, "isError", false, "IS_ERROR");
+        public final static Property Type = new Property(6, String.class, "type", false, "TYPE");
+        public final static Property StemBeanList = new Property(7, String.class, "stemBeanList", false, "STEM_BEAN_LIST");
     }
 
     private final StemBean_Converter stemBeanListConverter = new StemBean_Converter();
@@ -51,8 +54,11 @@ public class DaoThemeBeanDao extends AbstractDao<DaoThemeBean, Long> {
                 "\"_id\" INTEGER PRIMARY KEY AUTOINCREMENT ," + // 0: id
                 "\"TAG_ID\" INTEGER," + // 1: tagID
                 "\"THEME\" TEXT," + // 2: theme
-                "\"TYPE\" TEXT," + // 3: type
-                "\"STEM_BEAN_LIST\" TEXT);"); // 4: stemBeanList
+                "\"COMPLETE_NUMBER\" INTEGER," + // 3: completeNumber
+                "\"IS_SIGN\" INTEGER," + // 4: isSign
+                "\"IS_ERROR\" INTEGER," + // 5: isError
+                "\"TYPE\" TEXT," + // 6: type
+                "\"STEM_BEAN_LIST\" TEXT);"); // 7: stemBeanList
     }
 
     /** Drops the underlying database table. */
@@ -80,14 +86,29 @@ public class DaoThemeBeanDao extends AbstractDao<DaoThemeBean, Long> {
             stmt.bindString(3, theme);
         }
  
+        Long completeNumber = entity.getCompleteNumber();
+        if (completeNumber != null) {
+            stmt.bindLong(4, completeNumber);
+        }
+ 
+        Boolean isSign = entity.getIsSign();
+        if (isSign != null) {
+            stmt.bindLong(5, isSign ? 1L: 0L);
+        }
+ 
+        Boolean isError = entity.getIsError();
+        if (isError != null) {
+            stmt.bindLong(6, isError ? 1L: 0L);
+        }
+ 
         String type = entity.getType();
         if (type != null) {
-            stmt.bindString(4, type);
+            stmt.bindString(7, type);
         }
  
         List stemBeanList = entity.getStemBeanList();
         if (stemBeanList != null) {
-            stmt.bindString(5, stemBeanListConverter.convertToDatabaseValue(stemBeanList));
+            stmt.bindString(8, stemBeanListConverter.convertToDatabaseValue(stemBeanList));
         }
     }
 
@@ -110,14 +131,29 @@ public class DaoThemeBeanDao extends AbstractDao<DaoThemeBean, Long> {
             stmt.bindString(3, theme);
         }
  
+        Long completeNumber = entity.getCompleteNumber();
+        if (completeNumber != null) {
+            stmt.bindLong(4, completeNumber);
+        }
+ 
+        Boolean isSign = entity.getIsSign();
+        if (isSign != null) {
+            stmt.bindLong(5, isSign ? 1L: 0L);
+        }
+ 
+        Boolean isError = entity.getIsError();
+        if (isError != null) {
+            stmt.bindLong(6, isError ? 1L: 0L);
+        }
+ 
         String type = entity.getType();
         if (type != null) {
-            stmt.bindString(4, type);
+            stmt.bindString(7, type);
         }
  
         List stemBeanList = entity.getStemBeanList();
         if (stemBeanList != null) {
-            stmt.bindString(5, stemBeanListConverter.convertToDatabaseValue(stemBeanList));
+            stmt.bindString(8, stemBeanListConverter.convertToDatabaseValue(stemBeanList));
         }
     }
 
@@ -132,8 +168,11 @@ public class DaoThemeBeanDao extends AbstractDao<DaoThemeBean, Long> {
             cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0), // id
             cursor.isNull(offset + 1) ? null : cursor.getLong(offset + 1), // tagID
             cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2), // theme
-            cursor.isNull(offset + 3) ? null : cursor.getString(offset + 3), // type
-            cursor.isNull(offset + 4) ? null : stemBeanListConverter.convertToEntityProperty(cursor.getString(offset + 4)) // stemBeanList
+            cursor.isNull(offset + 3) ? null : cursor.getLong(offset + 3), // completeNumber
+            cursor.isNull(offset + 4) ? null : cursor.getShort(offset + 4) != 0, // isSign
+            cursor.isNull(offset + 5) ? null : cursor.getShort(offset + 5) != 0, // isError
+            cursor.isNull(offset + 6) ? null : cursor.getString(offset + 6), // type
+            cursor.isNull(offset + 7) ? null : stemBeanListConverter.convertToEntityProperty(cursor.getString(offset + 7)) // stemBeanList
         );
         return entity;
     }
@@ -143,8 +182,11 @@ public class DaoThemeBeanDao extends AbstractDao<DaoThemeBean, Long> {
         entity.setId(cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0));
         entity.setTagID(cursor.isNull(offset + 1) ? null : cursor.getLong(offset + 1));
         entity.setTheme(cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2));
-        entity.setType(cursor.isNull(offset + 3) ? null : cursor.getString(offset + 3));
-        entity.setStemBeanList(cursor.isNull(offset + 4) ? null : stemBeanListConverter.convertToEntityProperty(cursor.getString(offset + 4)));
+        entity.setCompleteNumber(cursor.isNull(offset + 3) ? null : cursor.getLong(offset + 3));
+        entity.setIsSign(cursor.isNull(offset + 4) ? null : cursor.getShort(offset + 4) != 0);
+        entity.setIsError(cursor.isNull(offset + 5) ? null : cursor.getShort(offset + 5) != 0);
+        entity.setType(cursor.isNull(offset + 6) ? null : cursor.getString(offset + 6));
+        entity.setStemBeanList(cursor.isNull(offset + 7) ? null : stemBeanListConverter.convertToEntityProperty(cursor.getString(offset + 7)));
      }
     
     @Override
