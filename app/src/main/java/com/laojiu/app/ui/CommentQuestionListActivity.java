@@ -3,14 +3,22 @@ package com.laojiu.app.ui;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 
 import androidx.annotation.Nullable;
 import androidx.viewpager.widget.ViewPager;
 
+import com.laojiu.app.AppContent;
 import com.laojiu.app.R;
 import com.laojiu.app.adapter.CommentQuestionVpAdapter;
 import com.laojiu.app.base.BaseActivity;
+import com.laojiu.app.bean.EventCommentQuestionBean;
+import com.laojiu.app.bean.WelcomeBean;
 import com.laojiu.app.view.TitleView;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 public class CommentQuestionListActivity extends BaseActivity {
 
@@ -26,6 +34,7 @@ public class CommentQuestionListActivity extends BaseActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_comment_question_list);
         mTitle = findViewById(R.id.comment_question_list_title);
         ViewPager mVp = findViewById(R.id.comment_question_list_vp);
@@ -52,4 +61,6 @@ public class CommentQuestionListActivity extends BaseActivity {
 
         }
     };
+
+
 }

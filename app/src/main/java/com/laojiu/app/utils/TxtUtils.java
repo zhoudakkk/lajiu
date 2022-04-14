@@ -12,6 +12,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class TxtUtils {
@@ -52,16 +53,15 @@ public class TxtUtils {
     public static List<DaoThemeBean> getThemeList(String str, String type) {
         List<DaoThemeBean> list = new ArrayList<>();
         if (TextUtils.isEmpty(str)) return list;
-
+        Date date = new Date();
         String[] allList = str.split("题目");
         for (int i = 0; i < allList.length; i++) {
             String allStr = allList[i];
             DaoThemeBean bean = getThemeBean(allStr);
 
             if (bean != null) {
-
-                Long aLong = Long.parseLong("" + i);
-                bean.tagID = aLong;
+                bean.tagID = Long.parseLong("" + i);
+                bean.appID = date.getTime() + i;
                 bean.type = type;
                 list.add(bean);
             }

@@ -10,8 +10,13 @@ import androidx.appcompat.widget.AppCompatImageButton;
 import androidx.appcompat.widget.AppCompatTextView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.laojiu.app.APP;
 import com.laojiu.app.R;
 import com.laojiu.app.bean.DaoThemeBean;
+import com.laojiu.app.db.gen.DaoThemeBeanDao;
+import com.laojiu.app.ui.CommentQuestionDetailsActivity;
+import com.laojiu.app.utils.DataUtil;
+import com.laojiu.app.utils.Utils;
 
 import java.util.List;
 
@@ -24,6 +29,16 @@ public class CommentQuestionAdapter extends RecyclerView.Adapter<CommentQuestion
     public CommentQuestionAdapter(Context context, List<DaoThemeBean> list) {
         mContext = context;
         mList = list;
+    }
+
+    public void upItemView(long appID) {
+        if (mList == null) return;
+        for (int i = 0; i < mList.size(); i++) {
+            if (mList.get(i).appID == appID) {
+                notifyItemChanged(i);
+                return;
+            }
+        }
     }
 
     @NonNull
@@ -51,9 +66,29 @@ public class CommentQuestionAdapter extends RecyclerView.Adapter<CommentQuestion
         holder.ll.setVisibility(View.GONE);
         if (item.completeNumber != null && item.completeNumber > 0) {
             holder.ll.setVisibility(View.VISIBLE);
-            holder.numberTv.setText("*" + item.completeNumber);
+            holder.numberTv.setText("X" + item.completeNumber);
         }
 
+        holder.signBtn.setOnClickListener(v -> setSign(position, item));
+        holder.errorBtn.setOnClickListener(v -> setError(position, item));
+        holder.continueBtn.setOnClickListener(v -> gotoNextActivity(item, true));
+        holder.redoBtn.setOnClickListener(v -> gotoNextActivity(item, false));
+    }
+
+    private void gotoNextActivity(DaoThemeBean item, boolean isContinue) {
+        CommentQuestionDetailsActivity.gotoActivity(mContext, item.appID, isContinue);
+    }
+
+    private void setSign(int position, DaoThemeBean item) {
+        DataUtil.setSign(item);
+        notifyItemChanged(position);
+        Utils.showToast("操作成功");
+    }
+
+    private void setError(int position, DaoThemeBean item) {
+        DataUtil.setError(item);
+        notifyItemChanged(position);
+        Utils.showToast("操作成功");
     }
 
     @Override
@@ -63,17 +98,25 @@ public class CommentQuestionAdapter extends RecyclerView.Adapter<CommentQuestion
 
     class VH extends RecyclerView.ViewHolder {
 
+        private final View cl;
         private final AppCompatTextView titleTv;
         private final AppCompatImageButton signBtn;
         private final AppCompatImageButton errorBtn;
+        private final AppCompatImageButton continueBtn;
+        private final AppCompatImageButton redoBtn;
+
         private final LinearLayout ll;
         private final AppCompatTextView numberTv;
 
+
         public VH(@NonNull View itemView) {
             super(itemView);
+            cl = itemView.findViewById(R.id.item_comment_question_cl);
             titleTv = itemView.findViewById(R.id.item_comment_question_title);
             signBtn = itemView.findViewById(R.id.item_comment_question_sign);
             errorBtn = itemView.findViewById(R.id.item_comment_question_error);
+            continueBtn = itemView.findViewById(R.id.item_comment_question_continue);
+            redoBtn = itemView.findViewById(R.id.item_comment_question_redo);
 
             ll = itemView.findViewById(R.id.item_comment_question_ll);
             numberTv = itemView.findViewById(R.id.item_comment_question_tv);

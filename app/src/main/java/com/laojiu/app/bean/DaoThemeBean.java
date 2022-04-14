@@ -4,6 +4,7 @@ import org.greenrobot.greendao.annotation.Convert;
 import org.greenrobot.greendao.annotation.Entity;
 import org.greenrobot.greendao.annotation.Id;
 
+import java.io.Serializable;
 import java.util.List;
 
 import org.greenrobot.greendao.annotation.Generated;
@@ -15,6 +16,8 @@ public class DaoThemeBean {
     @Id(autoincrement = true)
     private Long id;
 
+
+    public Long appID;
 
     public Long tagID;
 
@@ -32,7 +35,6 @@ public class DaoThemeBean {
     public Boolean isError;
 
 
-
     /**
      * 0 是问题
      * 1 是原因
@@ -43,11 +45,12 @@ public class DaoThemeBean {
     @Convert(columnType = String.class, converter = StemBean_Converter.class)
     public List<StemBean> stemBeanList;
 
-    @Generated(hash = 1183226133)
-    public DaoThemeBean(Long id, Long tagID, String theme, Long completeNumber,
-            Boolean isSign, Boolean isError, String type,
+    @Generated(hash = 483888184)
+    public DaoThemeBean(Long id, Long appID, Long tagID, String theme,
+            Long completeNumber, Boolean isSign, Boolean isError, String type,
             List<StemBean> stemBeanList) {
         this.id = id;
+        this.appID = appID;
         this.tagID = tagID;
         this.theme = theme;
         this.completeNumber = completeNumber;
@@ -139,5 +142,13 @@ public class DaoThemeBean {
 
     public void setIsError(Boolean isError) {
         this.isError = isError;
+    }
+
+    public Long getAppID() {
+        return appID;
+    }
+
+    public void setAppID(Long appID) {
+        this.appID = appID;
     }
 }

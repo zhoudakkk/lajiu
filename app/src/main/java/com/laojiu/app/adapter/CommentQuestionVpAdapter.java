@@ -30,6 +30,7 @@ public class CommentQuestionVpAdapter extends FragmentPagerAdapter {
     }
 
 
+
     @Nullable
     @Override
     public CharSequence getPageTitle(int position) {

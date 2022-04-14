@@ -18,9 +18,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".ui.MainActivity" />
-        <activity android:name=".ui.QuestionActivity" />
-        <activity android:name=".ui.CommentQuestionListActivity" />
 
+        <activity android:name=".ui.CommentQuestionListActivity" />
+        <activity android:name=".ui.CommentQuestionDetailsActivity" />
     </application>
 
 </manifest>

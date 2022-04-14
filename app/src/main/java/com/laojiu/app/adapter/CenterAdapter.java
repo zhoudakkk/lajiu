@@ -12,7 +12,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.laojiu.app.R;
 import com.laojiu.app.bean.CenterDataBean;
 import com.laojiu.app.ui.CommentQuestionListActivity;
-import com.laojiu.app.ui.QuestionActivity;
 import com.laojiu.app.utils.Utils;
 
 import java.util.ArrayList;

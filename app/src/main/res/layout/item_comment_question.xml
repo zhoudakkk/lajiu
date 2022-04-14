@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -9,9 +8,11 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="16dp">
+        android:layout_margin="16dp"
+        app:cardCornerRadius="@dimen/main_radius">
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/item_comment_question_cl"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center_vertical"
@@ -21,38 +22,64 @@
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/item_comment_question_title"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginTop="12dp"
+                app:layout_constraintRight_toLeftOf="@id/item_comment_question_continue"
                 android:layout_height="match_parent"
                 android:text="@string/app_name"
                 android:textColor="@color/text_color"
                 android:textSize="@dimen/text_size_20"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                tools:ignore="MissingConstraints" />
+
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/item_comment_question_continue"
+                android:layout_width="46dp"
+                android:layout_height="46dp"
+                android:background="@drawable/ripple_main_normal_bg"
+                android:src="@drawable/item_continue"
+                app:layout_constraintRight_toLeftOf="@id/item_comment_question_redo"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="MissingConstraints" />
+
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/item_comment_question_redo"
+                android:layout_width="46dp"
+                android:layout_height="46dp"
+                android:background="@drawable/ripple_main_normal_bg"
+                android:src="@drawable/item_redo"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="MissingConstraints" />
 
             <androidx.appcompat.widget.AppCompatImageButton
                 android:id="@+id/item_comment_question_sign"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
+                android:layout_width="46dp"
+                android:layout_height="46dp"
                 android:background="@drawable/ripple_main_normal_bg"
                 android:src="@drawable/sign_1"
                 app:layout_constraintRight_toLeftOf="@id/item_comment_question_error"
-                app:layout_constraintTop_toBottomOf="@id/item_comment_question_title"
+                app:layout_constraintTop_toBottomOf="@id/item_comment_question_redo"
                 tools:ignore="MissingConstraints" />
 
             <androidx.appcompat.widget.AppCompatImageButton
                 android:id="@+id/item_comment_question_error"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
+                android:layout_width="46dp"
+                android:layout_height="46dp"
                 android:background="@drawable/ripple_main_normal_bg"
                 android:src="@drawable/error_1"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/item_comment_question_title"
+                app:layout_constraintTop_toBottomOf="@id/item_comment_question_redo"
                 tools:ignore="MissingConstraints" />
 
             <LinearLayout
                 android:id="@+id/item_comment_question_ll"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/item_comment_question_title"
+                android:layout_marginTop="12dp"
                 tools:ignore="MissingConstraints">
 
                 <androidx.appcompat.widget.AppCompatImageView
@@ -61,14 +88,15 @@
                     android:src="@drawable/complete_0"
                     app:layout_constraintBottom_toBottomOf="parent"
                     tools:ignore="MissingConstraints" />
+
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/item_comment_question_tv"
-                    android:textSize="@dimen/text_size_16"
-                    android:textColor="@color/main_theme"
-                    android:textStyle="bold"
-                    android:text="X1"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content"
+                    android:text="X1"
+                    android:textColor="@color/main_theme"
+                    android:textSize="@dimen/text_size_16"
+                    android:textStyle="bold" />
             </LinearLayout>
 
 
