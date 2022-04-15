@@ -8,4 +8,6 @@ public class AppContent {
     public static String MethodType = "2";
 
     public static String isFirst =  "isFirst";
+
+    public static String answerTag = "answer";
 }

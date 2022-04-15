@@ -10,10 +10,8 @@ import androidx.appcompat.widget.AppCompatImageButton;
 import androidx.appcompat.widget.AppCompatTextView;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.laojiu.app.APP;
 import com.laojiu.app.R;
 import com.laojiu.app.bean.DaoThemeBean;
-import com.laojiu.app.db.gen.DaoThemeBeanDao;
 import com.laojiu.app.ui.CommentQuestionDetailsActivity;
 import com.laojiu.app.utils.DataUtil;
 import com.laojiu.app.utils.Utils;
@@ -23,7 +21,7 @@ import java.util.List;
 public class CommentQuestionAdapter extends RecyclerView.Adapter<CommentQuestionAdapter.VH> {
 
 
-    private List<DaoThemeBean> mList;
+    public List<DaoThemeBean> mList;
     private Context mContext;
 
     public CommentQuestionAdapter(Context context, List<DaoThemeBean> list) {

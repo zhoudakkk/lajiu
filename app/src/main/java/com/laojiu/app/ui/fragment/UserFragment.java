@@ -17,6 +17,6 @@ public class UserFragment extends BaseFragment {
     public void initView(@Nullable Bundle savedInstanceState) {
         super.initView(savedInstanceState);
 
-        mView.findViewById(R.id.user_btn).setOnClickListener(v -> showEmptyView());
+
     }
 }

@@ -8,6 +8,7 @@ import androidx.fragment.app.FragmentPagerAdapter;
 
 import com.laojiu.app.AppContent;
 import com.laojiu.app.base.BaseFragment;
+import com.laojiu.app.bean.CommentQuestionModeBean;
 import com.laojiu.app.ui.fragment.CommentQuestionListFragment;
 
 import java.util.ArrayList;
@@ -18,14 +19,14 @@ public class CommentQuestionVpAdapter extends FragmentPagerAdapter {
     private List<CommentQuestionListFragment> mList = new ArrayList<>();
     private List<String> mListStr = new ArrayList<>();
 
-    public CommentQuestionVpAdapter(@NonNull FragmentManager fm) {
+    public CommentQuestionVpAdapter(@NonNull FragmentManager fm, CommentQuestionModeBean bean) {
         super(fm, FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
 
-        mList.add(CommentQuestionListFragment.getInstance(AppContent.QuestionType));
+        mList.add(CommentQuestionListFragment.getInstance(AppContent.QuestionType,bean));
         mListStr.add("内容概括");
-        mList.add(CommentQuestionListFragment.getInstance(AppContent.ReasonType));
+        mList.add(CommentQuestionListFragment.getInstance(AppContent.ReasonType,bean));
         mListStr.add("原因概括");
-        mList.add(CommentQuestionListFragment.getInstance(AppContent.MethodType));
+        mList.add(CommentQuestionListFragment.getInstance(AppContent.MethodType,bean));
         mListStr.add("对策概括");
     }
 

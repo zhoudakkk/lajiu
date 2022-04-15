@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.laojiu.app.R;
 import com.laojiu.app.bean.CenterDataBean;
+import com.laojiu.app.ui.CommentQuestionActivity;
 import com.laojiu.app.ui.CommentQuestionListActivity;
 import com.laojiu.app.utils.Utils;
 
@@ -25,9 +26,10 @@ public class CenterAdapter extends RecyclerView.Adapter<CenterAdapter.VH> {
 
     public CenterAdapter(Context context) {
         mContext = context;
-        mList.add(new CenterDataBean("问题", R.drawable.center_question, 0));
+
+        mList.add(new CenterDataBean("申论习题", R.drawable.center_exercises, 0));
         mList.add(new CenterDataBean("原因", R.drawable.center_reason, 1));
-        mList.add(new CenterDataBean("对策", R.drawable.center_method, 2));
+        mList.add(new CenterDataBean("问题", R.drawable.center_question, 2));
 
     }
 
@@ -50,7 +52,7 @@ public class CenterAdapter extends RecyclerView.Adapter<CenterAdapter.VH> {
 
     private void gotoNextActivity(CenterDataBean item) {
         if (item.tag == 0) {
-            CommentQuestionListActivity.gotoActivity(mContext);
+            CommentQuestionActivity.gotoActivity(mContext);
         }
 
     }

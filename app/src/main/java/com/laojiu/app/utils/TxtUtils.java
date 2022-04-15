@@ -60,7 +60,8 @@ public class TxtUtils {
             DaoThemeBean bean = getThemeBean(allStr);
 
             if (bean != null) {
-                bean.tagID = Long.parseLong("" + i);
+                int n = i-1;
+                bean.tagID = Long.parseLong("" + n);
                 bean.appID = date.getTime() + i;
                 bean.type = type;
                 list.add(bean);

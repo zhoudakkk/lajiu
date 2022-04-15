@@ -1,21 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     android:orientation="vertical">
 
     <com.laojiu.app.view.TitleView
-        android:id="@+id/comment_question_list_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:textLeft="申论习题"
-        app:textTitle="内容概括" />
+        app:textTitle="申论习题"
+        tools:ignore="MissingConstraints" />
 
 
-    <androidx.viewpager.widget.ViewPager
-        android:id="@+id/comment_question_list_vp"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/comment_question_mode_rv"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent" />
+
 
 </LinearLayout>

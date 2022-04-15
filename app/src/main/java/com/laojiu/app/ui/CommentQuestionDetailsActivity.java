@@ -47,6 +47,7 @@ public class CommentQuestionDetailsActivity extends BaseActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_comment_question_details);
+
         long appID = getIntent().getLongExtra("appID", 0);
         boolean isContinue = getIntent().getBooleanExtra("isContinue", false);
         if (isContinue) {

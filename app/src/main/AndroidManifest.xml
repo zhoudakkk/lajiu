@@ -3,12 +3,12 @@
     package="com.laojiu.app">
 
     <application
+        android:name=".APP"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
-        android:name=".APP"
         android:theme="@style/AppTheme">
         <activity android:name=".ui.WelcomeActivity">
             <intent-filter>
@@ -19,8 +19,15 @@
         </activity>
         <activity android:name=".ui.MainActivity" />
 
+        <activity android:name=".ui.CommentQuestionActivity" />
         <activity android:name=".ui.CommentQuestionListActivity" />
-        <activity android:name=".ui.CommentQuestionDetailsActivity" />
+        <activity android:name=".ui.CommentQuestionSearchActivity" />
+
+        <activity
+            android:name=".ui.CommentQuestionDetailsActivity"
+            android:windowSoftInputMode="adjustPan" />
+
+
     </application>
 
 </manifest>

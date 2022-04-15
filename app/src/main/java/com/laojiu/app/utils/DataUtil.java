@@ -6,13 +6,15 @@ import com.laojiu.app.bean.DaoThemeBean;
 import com.laojiu.app.bean.StemBean;
 import com.laojiu.app.db.gen.DaoThemeBeanDao;
 
+import org.greenrobot.greendao.query.WhereCondition;
+
 import java.nio.ShortBuffer;
+import java.util.ArrayList;
 import java.util.List;
 
 public class DataUtil {
 
     public static List<DaoThemeBean> getQuestionData(int pager) {
-        pager = pager + 1;
         return APP.getDaoSession().getDaoThemeBeanDao().queryBuilder().
                 where(DaoThemeBeanDao.Properties.Type.eq(AppContent.QuestionType), DaoThemeBeanDao.Properties.TagID.between(pager, 10 + pager)).list();
     }
@@ -28,6 +30,44 @@ public class DataUtil {
 
         return APP.getDaoSession().getDaoThemeBeanDao().queryBuilder().
                 where(DaoThemeBeanDao.Properties.Type.eq(type)).list();
+    }
+
+    public static List<DaoThemeBean> getAllData(String type, WhereCondition condition) {
+
+        return APP.getDaoSession().getDaoThemeBeanDao().queryBuilder().
+                where(DaoThemeBeanDao.Properties.Type.eq(type), condition).list();
+    }
+
+    public static List<DaoThemeBean> getAllCompleteData(String type) {
+        WhereCondition condition = DaoThemeBeanDao.Properties.CompleteNumber.gt(0);
+        return getAllData(type, condition);
+    }
+
+    public static List<DaoThemeBean> getAllIncompleteData(String type) {
+        WhereCondition condition = DaoThemeBeanDao.Properties.CompleteNumber.le(0);
+        return getAllData(type, condition);
+
+    }
+
+    public static List<DaoThemeBean> getAllSignData(String type) {
+        WhereCondition condition = DaoThemeBeanDao.Properties.IsSign.eq(true);
+        return getAllData(type, condition);
+    }
+
+    public static List<DaoThemeBean> getAllErrorData(String type) {
+        WhereCondition condition = DaoThemeBeanDao.Properties.IsError.eq(true);
+        return getAllData(type, condition);
+    }
+
+    public static List<DaoThemeBean> getNumberData(String type) {
+        int number = SpUtils.getInt(type);
+        WhereCondition condition = DaoThemeBeanDao.Properties.TagID.between(number, number + 10);
+        return getAllData(type, condition);
+    }
+
+    public static List<DaoThemeBean> getRandomData(String type) {
+        WhereCondition condition = DaoThemeBeanDao.Properties.IsError.eq(true);
+        return getAllData(type, condition);
     }
 
 

@@ -27,12 +27,12 @@ public class DaoThemeBean {
     /**
      * 完成次数
      */
-    public Long completeNumber;
+    public Long completeNumber = Long.valueOf(0);
 
     //"1"
-    public Boolean isSign;
+    public Boolean isSign = false;
 
-    public Boolean isError;
+    public Boolean isError = false;
 
 
     /**
@@ -47,8 +47,8 @@ public class DaoThemeBean {
 
     @Generated(hash = 483888184)
     public DaoThemeBean(Long id, Long appID, Long tagID, String theme,
-            Long completeNumber, Boolean isSign, Boolean isError, String type,
-            List<StemBean> stemBeanList) {
+                        Long completeNumber, Boolean isSign, Boolean isError, String type,
+                        List<StemBean> stemBeanList) {
         this.id = id;
         this.appID = appID;
         this.tagID = tagID;

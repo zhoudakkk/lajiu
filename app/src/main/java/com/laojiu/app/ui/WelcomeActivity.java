@@ -106,6 +106,9 @@ public class WelcomeActivity extends BaseActivity {
             }
         }).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(list -> {
             SpUtils.putBoolean(AppContent.isFirst, true);
+            SpUtils.putInt(AppContent.QuestionType, 0);
+            SpUtils.putInt(AppContent.ReasonType, 0);
+            SpUtils.putInt(AppContent.MethodType, 0);
         });
     }
 
