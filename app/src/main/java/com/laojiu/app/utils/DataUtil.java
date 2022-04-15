@@ -1,5 +1,7 @@
 package com.laojiu.app.utils;
 
+import android.text.TextUtils;
+
 import com.laojiu.app.APP;
 import com.laojiu.app.AppContent;
 import com.laojiu.app.bean.DaoThemeBean;
@@ -64,6 +66,34 @@ public class DataUtil {
         WhereCondition condition = DaoThemeBeanDao.Properties.TagID.between(number, number + 10);
         return getAllData(type, condition);
     }
+
+    /**
+     * @param type
+     * @return
+     */
+    public static List<DaoThemeBean> getAnswerData(String type,String str) {
+
+        List<DaoThemeBean> data = getAllData(type);
+        List<DaoThemeBean> dataNew = new ArrayList<>();
+        for (int i = 0; i < data.size(); i++) {
+            DaoThemeBean item = data.get(i);
+            List<StemBean> list = item.stemBeanList;
+            for (int n = 0; n < list.size(); n++) {
+                String answer = list.get(n).answer;
+                if (!TextUtils.isEmpty(answer)&&answer.contains(str)) {
+                    dataNew.add(item);
+                    continue;
+                }
+            }
+        }
+        return dataNew;
+    }
+
+    public static List<DaoThemeBean> getThemeData(String type,String str) {
+        WhereCondition condition = DaoThemeBeanDao.Properties.Theme.like("%"+str+"%");
+        return getAllData(type, condition);
+    }
+
 
     public static List<DaoThemeBean> getRandomData(String type) {
         WhereCondition condition = DaoThemeBeanDao.Properties.IsError.eq(true);

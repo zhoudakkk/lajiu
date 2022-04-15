@@ -12,14 +12,14 @@ public class CommentQuestionModeBean implements Serializable {
     public final static String incomplete = "未完成";
     public final static String sign = "标星";
     public final static String error = "错题";
-
     public final static String everyday = "来30";
-
     public final static String answer = "答案逆推";
+    public final static String titleStr = "主题分类";
+
     public int type;
     public int image;
     public String title;
-
+    public String str;
     public CommentQuestionModeBean(int type) {
         this.type = type;
     }
@@ -27,6 +27,10 @@ public class CommentQuestionModeBean implements Serializable {
     public CommentQuestionModeBean(int type, int image, String title) {
         this.type = type;
         this.image = image;
+        this.title = title;
+    }
+
+    public CommentQuestionModeBean(String title) {
         this.title = title;
     }
 
@@ -50,6 +54,13 @@ public class CommentQuestionModeBean implements Serializable {
                 break;
             case everyday:
                 data = DataUtil.getNumberData(tag);
+                break;
+
+            case answer:
+                data = DataUtil.getAnswerData(tag,str);
+                break;
+            case titleStr:
+                data = DataUtil.getThemeData(tag,str);
                 break;
         }
         return data;

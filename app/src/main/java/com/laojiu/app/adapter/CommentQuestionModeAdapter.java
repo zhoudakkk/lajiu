@@ -20,6 +20,7 @@ import com.laojiu.app.bean.CenterDataBean;
 import com.laojiu.app.bean.CommentQuestionModeBean;
 import com.laojiu.app.db.gen.DaoThemeBeanDao;
 import com.laojiu.app.ui.CommentQuestionListActivity;
+import com.laojiu.app.ui.CommentQuestionSearchActivity;
 import com.laojiu.app.utils.Utils;
 
 
@@ -44,7 +45,7 @@ public class CommentQuestionModeAdapter extends RecyclerView.Adapter<CommentQues
         mList.add(new CommentQuestionModeBean(1, R.drawable.error, CommentQuestionModeBean.error));
         mList.add(new CommentQuestionModeBean(1, R.drawable.random, CommentQuestionModeBean.everyday));
         mList.add(new CommentQuestionModeBean(1, R.drawable.answer, CommentQuestionModeBean.answer));
-
+        mList.add(new CommentQuestionModeBean(1, R.drawable.title, CommentQuestionModeBean.titleStr));
     }
 
     @NonNull
@@ -78,7 +79,13 @@ public class CommentQuestionModeAdapter extends RecyclerView.Adapter<CommentQues
     }
 
     private void gotoNextActivity(CommentQuestionModeBean item) {
-        if (TextUtils.equals(CommentQuestionModeBean.answer,item.title)){
+        if (TextUtils.equals(CommentQuestionModeBean.answer, item.title)) {
+            CommentQuestionSearchActivity.gotoActivity(mContext);
+            return;
+        }
+
+        if (TextUtils.equals(CommentQuestionModeBean.titleStr, item.title)) {
+            CommentQuestionSearchActivity.gotoActivity(mContext);
             return;
         }
         CommentQuestionListActivity.gotoActivity(mContext, item);
