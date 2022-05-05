@@ -6,7 +6,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.widget.AppCompatButton;
 import androidx.appcompat.widget.AppCompatTextView;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -26,20 +25,22 @@ public class CommentQuestionSearchAdapter extends RecyclerView.Adapter<CommentQu
     public List<String> mList = new ArrayList<>();
     private String tagStr = "_";
     private Context mContext;
+    private String mContentTag;
 
-    public CommentQuestionSearchAdapter(Context context) {
+    public CommentQuestionSearchAdapter(Context context, String contentTag) {
         mContext = context;
+        mContentTag = contentTag;
         setList();
     }
 
     public void addData(String tag) {
         if (mList == null || mList.size() <= 0) {
-            SpUtils.putString(AppContent.answerTag, tag);
+            SpUtils.putString(mContentTag, tag);
             mList.add(0, tag);
         } else {
-            String str = SpUtils.getString(AppContent.answerTag);
+            String str = SpUtils.getString(mContentTag);
             str = tag + tagStr + str;
-            SpUtils.putString(AppContent.answerTag, str);
+            SpUtils.putString(mContentTag, str);
             setList();
 
         }
@@ -62,13 +63,13 @@ public class CommentQuestionSearchAdapter extends RecyclerView.Adapter<CommentQu
     }
 
     private boolean delete(String item) {
-        String str = SpUtils.getString(AppContent.answerTag);
+        String str = SpUtils.getString(mContentTag);
         if (item.contains(tagStr)) {
             String replace = str.replace(item + tagStr, "");
-            SpUtils.putString(AppContent.answerTag, replace);
+            SpUtils.putString(mContentTag, replace);
             setList();
         } else {
-            SpUtils.putString(AppContent.answerTag, "");
+            SpUtils.putString(mContentTag, "");
             mList.clear();
         }
         notifyDataSetChanged();
@@ -77,12 +78,15 @@ public class CommentQuestionSearchAdapter extends RecyclerView.Adapter<CommentQu
 
     private void gotoNextActivity(String str) {
         CommentQuestionModeBean bean = new CommentQuestionModeBean(CommentQuestionModeBean.answer);
+        if (!TextUtils.equals(mContentTag, AppContent.answerTag))
+            bean.title = CommentQuestionModeBean.titleStr;
+
         bean.str = str;
         CommentQuestionListActivity.gotoActivity(mContext, bean);
     }
 
     private void setList() {
-        String str = SpUtils.getString(AppContent.answerTag);
+        String str = SpUtils.getString(mContentTag);
         if (!TextUtils.isEmpty(str)) {
             mList.clear();
             mList.addAll(Arrays.asList(str.split(tagStr)));

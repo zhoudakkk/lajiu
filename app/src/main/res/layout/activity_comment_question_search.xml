@@ -6,6 +6,7 @@
     android:orientation="vertical">
 
     <com.laojiu.app.view.TitleView
+        android:id="@+id/comment_question_search_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:textTitle="答案逆推" />

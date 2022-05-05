@@ -10,4 +10,5 @@ public class AppContent {
     public static String isFirst =  "isFirst";
 
     public static String answerTag = "answer";
+    public static String titleTag = "title";
 }

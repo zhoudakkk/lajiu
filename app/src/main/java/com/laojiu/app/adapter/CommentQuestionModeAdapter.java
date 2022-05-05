@@ -80,12 +80,12 @@ public class CommentQuestionModeAdapter extends RecyclerView.Adapter<CommentQues
 
     private void gotoNextActivity(CommentQuestionModeBean item) {
         if (TextUtils.equals(CommentQuestionModeBean.answer, item.title)) {
-            CommentQuestionSearchActivity.gotoActivity(mContext);
+            CommentQuestionSearchActivity.gotoActivity(mContext, item);
             return;
         }
 
         if (TextUtils.equals(CommentQuestionModeBean.titleStr, item.title)) {
-            CommentQuestionSearchActivity.gotoActivity(mContext);
+            CommentQuestionSearchActivity.gotoActivity(mContext, item);
             return;
         }
         CommentQuestionListActivity.gotoActivity(mContext, item);
