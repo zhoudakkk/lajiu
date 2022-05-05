@@ -9,13 +9,17 @@
         android:id="@+id/comment_question_list_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:textLeft="申论习题"
-        app:textTitle="内容概括" />
+        app:textLeft="返回" />
 
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/comment_question_list_tl"
+        android:layout_width="match_parent"
+        android:layout_height="48dp" />
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/comment_question_list_vp"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent" />
 
 </LinearLayout>

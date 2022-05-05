@@ -27,7 +27,7 @@ public class CenterAdapter extends RecyclerView.Adapter<CenterAdapter.VH> {
     public CenterAdapter(Context context) {
         mContext = context;
 
-        mList.add(new CenterDataBean("申论习题", R.drawable.center_exercises, 0));
+        mList.add(new CenterDataBean("习题", R.drawable.center_exercises, 0));
         mList.add(new CenterDataBean("原因", R.drawable.center_reason, 1));
         mList.add(new CenterDataBean("问题", R.drawable.center_question, 2));
 

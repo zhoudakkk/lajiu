@@ -10,7 +10,7 @@
     <com.laojiu.app.view.TitleView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:textTitle="申论习题"
+        app:textTitle="习题"
         tools:ignore="MissingConstraints" />
 
 
