@@ -6,6 +6,7 @@ import com.laojiu.app.APP;
 import com.laojiu.app.AppContent;
 import com.laojiu.app.bean.DaoThemeBean;
 import com.laojiu.app.bean.StemBean;
+import com.laojiu.app.db.gen.DaoSession;
 import com.laojiu.app.db.gen.DaoThemeBeanDao;
 
 import org.greenrobot.greendao.query.WhereCondition;
@@ -71,7 +72,7 @@ public class DataUtil {
      * @param type
      * @return
      */
-    public static List<DaoThemeBean> getAnswerData(String type,String str) {
+    public static List<DaoThemeBean> getAnswerData(String type, String str) {
 
         List<DaoThemeBean> data = getAllData(type);
         List<DaoThemeBean> dataNew = new ArrayList<>();
@@ -80,7 +81,7 @@ public class DataUtil {
             List<StemBean> list = item.stemBeanList;
             for (int n = 0; n < list.size(); n++) {
                 String answer = list.get(n).answer;
-                if (!TextUtils.isEmpty(answer)&&answer.contains(str)) {
+                if (!TextUtils.isEmpty(answer) && answer.contains(str)) {
                     dataNew.add(item);
                     continue;
                 }
@@ -89,8 +90,8 @@ public class DataUtil {
         return dataNew;
     }
 
-    public static List<DaoThemeBean> getThemeData(String type,String str) {
-        WhereCondition condition = DaoThemeBeanDao.Properties.Theme.like("%"+str+"%");
+    public static List<DaoThemeBean> getThemeData(String type, String str) {
+        WhereCondition condition = DaoThemeBeanDao.Properties.Theme.like("%" + str + "%");
         return getAllData(type, condition);
     }
 
@@ -185,5 +186,7 @@ public class DataUtil {
         dao.update(item);
         return item;
     }
+
+
 
 }

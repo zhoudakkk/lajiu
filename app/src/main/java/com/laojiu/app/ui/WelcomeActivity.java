@@ -1,6 +1,8 @@
 package com.laojiu.app.ui;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -37,6 +39,11 @@ public class WelcomeActivity extends BaseActivity {
     private AppCompatTextView methodTv;
 
 
+    public static void gotoActivity(Context context){
+        Intent intent = new Intent(context,WelcomeActivity.class);
+        context.startActivity(intent);
+
+    }
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,6 +57,7 @@ public class WelcomeActivity extends BaseActivity {
         findViewById(R.id.activity_welcome_iv).setOnClickListener(v -> getDataAgain());
         boolean b = SpUtils.getBoolean(AppContent.isFirst);
         if (!b) {
+            APP.resetAll();
             initData();
         } else {
             MainActivity.gotoActivity(this);

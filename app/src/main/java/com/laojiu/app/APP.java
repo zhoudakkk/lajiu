@@ -5,12 +5,13 @@ import android.content.Context;
 
 import com.laojiu.app.db.gen.DaoMaster;
 import com.laojiu.app.db.gen.DaoSession;
+import com.laojiu.app.db.gen.DaoThemeBeanDao;
 
 public class APP extends Application {
     public static Context mContext;
-    private DaoMaster daoMaster;
-    private static DaoSession daoSession;
-    private DaoMaster.DevOpenHelper devOpenHelper = null;
+    public static DaoMaster daoMaster;
+    public static DaoSession daoSession;
+    public DaoMaster.DevOpenHelper devOpenHelper = null;
 
     @Override
     public void onCreate() {
@@ -25,7 +26,16 @@ public class APP extends Application {
 
     //通过此方法,进行增删改查
     public static DaoSession getDaoSession() {
+
+
         return daoSession;
+    }
+
+    public static void resetAll(){
+        DaoMaster.dropAllTables(daoMaster.getDatabase(),true);
+        DaoMaster.createAllTables(daoMaster.getDatabase(),true);
+        DaoThemeBeanDao dao = APP.getDaoSession().getDaoThemeBeanDao();
+        dao.deleteAll();
     }
 
 }
