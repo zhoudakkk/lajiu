@@ -9,5 +9,7 @@ public class CenterDataBean {
         this.title = title;
         this.imageId = imageId;
         this.tag = tag;
+
     }
+
 }
